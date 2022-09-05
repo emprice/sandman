@@ -31,13 +31,11 @@ def params_to_cam(p, hxs):
     rgb = params_to_rgb(p, hxs)
     return np.vstack([labfn(tup) for tup in rgb])
 
-def find_optimal_params(hxs, min_intensity=55, max_intensity=85):
+def find_optimal_params(hxs, target):
 
     def objective(p):
         cam = params_to_cam(p, hxs)
         return np.sum((cam[:,0] - target)**2)
-
-    target = np.linspace(min_intensity, max_intensity, len(hxs))
 
     popsize = 100
     p0 = np.zeros((2 * len(hxs),))
@@ -51,7 +49,22 @@ def find_optimal_params(hxs, min_intensity=55, max_intensity=85):
 
     return sol.x, sol.fun
 
-def cmap_from_params(name, hxs, params):
+def find_optimal_params_sequential(hxs, min_intensity=55, max_intensity=85):
+
+    target = np.linspace(min_intensity, max_intensity, len(hxs))
+    return find_optimal_params(hxs, target)
+
+def find_optimal_params_diverging(hxs, min_intensity=55, max_intensity=85):
+
+    if len(hxs) % 2:
+        tmp = np.linspace(min_intensity, max_intensity, len(hxs) // 2 + 1)
+        target = np.concatenate((tmp[::-1], tmp[1:]))
+    else:
+        tmp = np.linspace(min_intensity, max_intensity, len(hxs) // 2)
+        target = np.concatenate((tmp[::-1], tmp))
+    return find_optimal_params(hxs, target)
+
+def interpolate_sequential(hxs, params):
 
     cam = params_to_cam(params, hxs)
 
@@ -62,9 +75,41 @@ def cmap_from_params(name, hxs, params):
 
     x = cam[:,0]
     xx = np.linspace(np.amin(x), np.amax(x), 250)
-    xxcam = interp.Akima1DInterpolator(x, cam)(xx)
+    return interp.Akima1DInterpolator(x, cam)(xx)
 
-    cs = np.vstack(list(map(revfn, xxcam)))
+def interpolate_diverging(hxs, params):
+
+    cam = params_to_cam(params, hxs)
+    n = len(hxs)
+
+    x = cam[:n//2+1,0][::-1]
+    xx = np.linspace(np.amin(x), np.amax(x), 125)
+
+    if n // 2 >= 3:
+        xx1 = interp.Akima1DInterpolator(x, cam[:n//2+1][::-1])(xx)
+    else:
+        xx1 = interp.interp1d(x, cam[:n//2+1][::-1], kind='slinear', axis=0)(xx)
+
+    x = cam[n//2:,0]
+    xx = np.linspace(np.amin(x), np.amax(x), 125)
+
+    if n // 2 >= 3:
+        xx2 = interp.Akima1DInterpolator(x, cam[n//2:])(xx)
+    else:
+        xx2 = interp.interp1d(x, cam[n//2:], kind='slinear', axis=0)(xx)
+
+    return np.concatenate((xx1[::-1], xx2))
+
+def cmap_from_params(name, hxs, params, kind):
+
+    if kind == 'sequential':
+        cam = interpolate_sequential(hxs, params)
+    elif kind == 'diverging':
+        cam = interpolate_diverging(hxs, params)
+    else:
+        raise NotImplementedError
+
+    cs = np.vstack(list(map(revfn, cam)))
     cs = np.clip(cs, 0, 1)
     return colors.LinearSegmentedColormap.from_list(name, cs)
 

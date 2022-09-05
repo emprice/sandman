@@ -2,11 +2,19 @@ import json
 import argparse
 import numpy as np
 
-def task(colors):
+def sequential_task(colors):
 
-    from .sandman import find_optimal_params
+    from .sandman import find_optimal_params_sequential
 
-    params, score = find_optimal_params(colors,
+    params, score = find_optimal_params_sequential(colors,
+        min_intensity=30, max_intensity=90)
+    return dict(params=list(params), colors=colors, score=score)
+
+def diverging_task(colors):
+
+    from .sandman import find_optimal_params_diverging
+
+    params, score = find_optimal_params_diverging(colors,
         min_intensity=30, max_intensity=90)
     return dict(params=list(params), colors=colors, score=score)
 
@@ -50,12 +58,19 @@ def optimize_handler(args):
     rvals = [args.count] if args.exact else range(3, args.count + 1)
     allparams = list()
 
+    if args.kind == 'sequential':
+        task = sequential_task
+    elif args.kind == 'diverging':
+        task = diverging_task
+    else:
+        raise NotImplementedError
+
     for r in rvals:
         allcolors = list(itertools.permutations(colors, r=args.count))
         allparams.extend(process_map(task, allcolors, max_workers=args.nproc))
 
     with open(args.output, 'w') as f:
-        f.write(json.dumps(allparams))
+        f.write(json.dumps(dict(kind=args.kind, optimized=allparams)))
 
 def make_preview_figure(args):
 
@@ -70,12 +85,14 @@ def make_preview_figure(args):
     nmaps = rows * cols
 
     with open(args.input, 'r') as f:
-        allparams = json.loads(f.read())
+        data = json.loads(f.read())
 
-    allparams = sorted(allparams, key=lambda p: p['score'])
-    allparams = allparams[:nmaps]
+    opt_data = sorted(data['optimized'], key=lambda p: p['score'])
+    opt_data = opt_data[:nmaps]
 
-    cmaps = list(map(lambda p: cmap_from_params('custom', p['colors'], p['params']), allparams))
+    norm = colors.Normalize(vmin=0, vmax=w)
+    cmaps = list(map(lambda p: cmap_from_params('custom', p['colors'],
+        p['params'], kind=data['kind']), opt_data))
 
     X = np.linspace(0, w, 250)
     Y = np.linspace(0, h, 5)
@@ -86,7 +103,7 @@ def make_preview_figure(args):
     axs = np.ravel(gs.subplots())
 
     for i, cmap in enumerate(cmaps):
-        axs[i].pcolormesh(X, Y, X, cmap=cmap)
+        axs[i].pcolormesh(X, Y, X, cmap=cmap, norm=norm)
         axs[i].xaxis.set_ticks([])
         axs[i].yaxis.set_ticks([])
         axs[i].xaxis.set_ticklabels([])
@@ -129,6 +146,8 @@ if __name__ == '__main__':
     subparser1.add_argument('--count', type=int, default=3)
     subparser1.add_argument('--exact', action='store_true')
     subparser1.add_argument('--nproc', type=int, default=1)
+    subparser1.add_argument('--kind', type=str, default='sequential',
+        choices=['sequential', 'diverging'])
     subparser1.set_defaults(func=optimize_handler)
 
     subparser2 = subparsers.add_parser('preview')
