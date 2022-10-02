@@ -2,21 +2,4 @@
 requires = ["setuptools"]
 build-backend = "setuptools.build_meta"
 
-[project]
-name = "sandman"
-readme = "README.md"
-requires-python = ">=3.8"
-license = { file = "LICENSE" }
-version = "1.0"
-dependencies = [
-    "numpy",
-    "scipy>=0.15.0",
-    "webcolors",
-    "colorspacious",
-]
-
-[project.optional-dependencies]
-verbose = ["tqdm"]
-visualize = ["matplotlib", "Pillow"]
-
 # vim: set ft=toml:

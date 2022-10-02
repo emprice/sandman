@@ -1,0 +1,50 @@
+# Configuration file for the Sphinx documentation builder
+
+import os
+import textwrap
+
+# -- Project information -----------------------------------------------------
+
+project = 'sandman'
+copyright = '2022, Ellen M. Price'
+author = '@emprice'
+
+# The full version, including alpha/beta/rc tags
+import sandman
+release = sandman.__version__
+
+
+# -- General configuration ---------------------------------------------------
+
+# Add any Sphinx extension module names here, as strings
+extensions = ['furiosa', 'sphinx.ext.todo', 'sphinx.ext.mathjax',
+              'sphinx.ext.autodoc']
+todo_include_todos = True
+
+smartquotes = True
+primary_domain = 'py'
+highlight_language = 'default'
+
+html_logo = '_static/sandman.svg'
+html_title = 'sandman'
+
+# List of patterns, relative to source directory, that match files and
+# directories to ignore when looking for source files
+exclude_patterns = []
+
+
+# -- Options for HTML output -------------------------------------------------
+
+html_theme = 'furiosa'
+pygments_style = 'nordlight'
+pygments_dark_style = 'norddark'
+
+# Add any paths that contain templates here, relative to this directory
+templates_path = []
+
+# Add any paths that contain custom static files (such as style sheets) here,
+# relative to this directory
+html_static_path = ['_static']
+#html_favicon = 'favicon.ico'
+
+# vim: set ft=python:
