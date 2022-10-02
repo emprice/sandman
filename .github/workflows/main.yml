@@ -31,7 +31,7 @@ jobs:
 
       - name: Run the documentation build
         run: |
-          sphinx-build -M html $GITHUB_WORKSPACE/demo $GITHUB_WORKSPACE/build
+          sphinx-build -M html $GITHUB_WORKSPACE/docs $GITHUB_WORKSPACE/build
           touch $GITHUB_WORKSPACE/build/html/.nojekyll
           
       - name: Push to documentation branch
