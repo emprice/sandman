@@ -14,12 +14,12 @@
     <link href="_static/fonts/SourceCodePro-Italic.ttf" rel="preload" as="font" type="font/ttf">
     <link href="_static/fonts/SourceCodePro-Bold.ttf" rel="preload" as="font" type="font/ttf">
     <link href="_static/fonts/SourceCodePro-BoldItalic.ttf" rel="preload" as="font" type="font/ttf">
-    <link rel="index" title="Index" href="genindex.html" /><link rel="search" title="Search" href="search.html" /><link rel="next" title="Project motivation" href="motivation.html" />
+    <link rel="index" title="Index" href="genindex.html" /><link rel="search" title="Search" href="search.html" /><link rel="next" title="Scripting interface" href="script.html" /><link rel="prev" title="Downloading and installing" href="installation.html" />
 
 
 
     <link rel="shortcut icon" href="_static/favicon.ico"/><meta name="generator" content="sphinx-5.2.3, furo 2022.09.29"/>
-        <title>sandman</title>
+        <title>Command-line interface - sandman</title>
       <link rel="stylesheet" type="text/css" href="_static/pygments.css" />
     <link rel="stylesheet" type="text/css" href="_static/styles/furo.css?digest=d81277517bee4d6b0349d71bb2661d4890b5617c" />
     <link rel="stylesheet" type="text/css" href="_static/css/tooltipster.custom.css" />
@@ -347,7 +347,7 @@
       </label>
     </div>
     <div class="header-center">
-      <a href="#"><div class="brand">sandman</div></a>
+      <a href="index.html"><div class="brand">sandman</div></a>
     </div>
     <div class="header-right">
       <div class="theme-toggle-container theme-toggle-header">
@@ -358,7 +358,7 @@
           <svg class="theme-icon-when-light"><use href="#svg-sun"></use></svg>
         </button>
       </div>
-      <label class="toc-overlay-icon toc-header-icon no-toc" for="__toc">
+      <label class="toc-overlay-icon toc-header-icon" for="__toc">
         <div class="visually-hidden">Toggle table of contents sidebar</div>
         <i class="icon"><svg><use href="#svg-toc"></use></svg></i>
       </label>
@@ -367,7 +367,7 @@
   <aside class="sidebar-drawer">
     <div class="sidebar-container">
       
-      <div class="sidebar-sticky"><a class="sidebar-brand centered" href="#">
+      <div class="sidebar-sticky"><a class="sidebar-brand centered" href="index.html">
   
   <div class="sidebar-logo-container">
     <img class="sidebar-logo" src="_static/sandman.svg" alt="Logo"/>
@@ -382,10 +382,10 @@
 </form>
 <div id="searchbox"></div><div class="sidebar-scroll"><div class="sidebar-tree">
   <p class="caption" role="heading"><span class="caption-text">Contents:</span></p>
-<ul>
+<ul class="current">
 <li class="toctree-l1"><a class="reference internal" href="motivation.html">Project motivation</a></li>
 <li class="toctree-l1"><a class="reference internal" href="installation.html">Downloading and installing</a></li>
-<li class="toctree-l1"><a class="reference internal" href="cli.html">Command-line interface</a></li>
+<li class="toctree-l1 current current-page"><a class="current reference internal" href="#">Command-line interface</a></li>
 <li class="toctree-l1"><a class="reference internal" href="script.html">Scripting interface</a></li>
 <li class="toctree-l1"><a class="reference internal" href="faq.html">Frequently asked questions</a></li>
 <li class="toctree-l1"><a class="reference internal" href="genindex.html">Index</a></li>
@@ -417,54 +417,218 @@
               <svg class="theme-icon-when-light"><use href="#svg-sun"></use></svg>
             </button>
           </div>
-          <label class="toc-overlay-icon toc-content-icon no-toc" for="__toc">
+          <label class="toc-overlay-icon toc-content-icon" for="__toc">
             <div class="visually-hidden">Toggle table of contents sidebar</div>
             <i class="icon"><svg><use href="#svg-toc"></use></svg></i>
           </label>
         </div>
         <article role="main">
-          <section id="span-class-rainbow-style-font-style-italic-span-style-color-ff0000-s-span-span-style-color-ffd400-a-span-span-style-color-54ff00-n-span-span-style-color-00ff7f-d-span-span-style-color-00a9ff-m-span-span-style-color-2a00ff-a-span-span-style-color-ff00fe-n-span-span-procedurally-generate-perceptually-uniform-colormaps">
-<h1><span class="rainbow" style="font-style: italic"><span style="color: #ff0000">s</span><span style="color: #ffd400">a</span><span style="color: #54ff00">n</span><span style="color: #00ff7f">d</span><span style="color: #00a9ff">m</span><span style="color: #2a00ff">a</span><span style="color: #ff00fe">n</span></span>: Procedurally generate perceptually uniform colormaps<a class="headerlink" href="#span-class-rainbow-style-font-style-italic-span-style-color-ff0000-s-span-span-style-color-ffd400-a-span-span-style-color-54ff00-n-span-span-style-color-00ff7f-d-span-span-style-color-00a9ff-m-span-span-style-color-2a00ff-a-span-span-style-color-ff00fe-n-span-span-procedurally-generate-perceptually-uniform-colormaps" title="Permalink to this heading">#</a></h1>
-<p style="font-family: 'Pacifico', cursive; font-size: 2em">Mr. Sandman, bring me a <span style="text-decoration: line-through #ee0000 wavy 0.1em">dream</span> colormap...</p><div class="toctree-wrapper compound">
-<p class="caption" role="heading"><span class="caption-text">Contents:</span></p>
-<ul>
-<li class="toctree-l1"><a class="reference internal" href="motivation.html">Project motivation</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="motivation.html#color-perception-differs-between-individuals">Color perception differs between individuals</a></li>
-<li class="toctree-l2"><a class="reference internal" href="motivation.html#well-known-perceptually-uniform-colormaps">Well-known perceptually uniform colormaps</a></li>
-<li class="toctree-l2"><a class="reference internal" href="motivation.html#what-span-class-rainbow-style-font-style-italic-span-style-color-ff0000-s-span-span-style-color-ffd400-a-span-span-style-color-54ff00-n-span-span-style-color-00ff7f-d-span-span-style-color-00a9ff-m-span-span-style-color-2a00ff-a-span-span-style-color-ff00fe-n-span-span-can-do">What <span class="rainbow" style="font-style: italic"><span style="color: #ff0000">s</span><span style="color: #ffd400">a</span><span style="color: #54ff00">n</span><span style="color: #00ff7f">d</span><span style="color: #00a9ff">m</span><span style="color: #2a00ff">a</span><span style="color: #ff00fe">n</span></span> can do</a></li>
-<li class="toctree-l2"><a class="reference internal" href="motivation.html#what-span-class-rainbow-style-font-style-italic-span-style-color-ff0000-s-span-span-style-color-ffd400-a-span-span-style-color-54ff00-n-span-span-style-color-00ff7f-d-span-span-style-color-00a9ff-m-span-span-style-color-2a00ff-a-span-span-style-color-ff00fe-n-span-span-cannot-do">What <span class="rainbow" style="font-style: italic"><span style="color: #ff0000">s</span><span style="color: #ffd400">a</span><span style="color: #54ff00">n</span><span style="color: #00ff7f">d</span><span style="color: #00a9ff">m</span><span style="color: #2a00ff">a</span><span style="color: #ff00fe">n</span></span> cannot do</a></li>
-</ul>
-</li>
-<li class="toctree-l1"><a class="reference internal" href="installation.html">Downloading and installing</a></li>
-<li class="toctree-l1"><a class="reference internal" href="cli.html">Command-line interface</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="cli.html#common-arguments">Common arguments</a></li>
-<li class="toctree-l2"><a class="reference internal" href="cli.html#generating-new-colormaps">Generating new colormaps</a></li>
-<li class="toctree-l2"><a class="reference internal" href="cli.html#previewing-colormaps">Previewing colormaps</a></li>
-<li class="toctree-l2"><a class="reference internal" href="cli.html#simulating-color-vision-deficiency">Simulating color vision deficiency</a></li>
-</ul>
-</li>
-<li class="toctree-l1"><a class="reference internal" href="script.html">Scripting interface</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="script.html#sandman.sandman.cmap_from_params"><code class="docutils literal notranslate"><span class="pre">cmap_from_params()</span></code></a></li>
-<li class="toctree-l2"><a class="reference internal" href="script.html#sandman.sandman.find_optimal_params"><code class="docutils literal notranslate"><span class="pre">find_optimal_params()</span></code></a></li>
-<li class="toctree-l2"><a class="reference internal" href="script.html#sandman.sandman.find_optimal_params_diverging"><code class="docutils literal notranslate"><span class="pre">find_optimal_params_diverging()</span></code></a></li>
-<li class="toctree-l2"><a class="reference internal" href="script.html#sandman.sandman.find_optimal_params_sequential"><code class="docutils literal notranslate"><span class="pre">find_optimal_params_sequential()</span></code></a></li>
-<li class="toctree-l2"><a class="reference internal" href="script.html#sandman.sandman.interpolate_diverging"><code class="docutils literal notranslate"><span class="pre">interpolate_diverging()</span></code></a></li>
-<li class="toctree-l2"><a class="reference internal" href="script.html#sandman.sandman.interpolate_sequential"><code class="docutils literal notranslate"><span class="pre">interpolate_sequential()</span></code></a></li>
-<li class="toctree-l2"><a class="reference internal" href="script.html#sandman.sandman.modify_color"><code class="docutils literal notranslate"><span class="pre">modify_color()</span></code></a></li>
-<li class="toctree-l2"><a class="reference internal" href="script.html#sandman.sandman.params_to_cam"><code class="docutils literal notranslate"><span class="pre">params_to_cam()</span></code></a></li>
-<li class="toctree-l2"><a class="reference internal" href="script.html#sandman.sandman.params_to_rgb"><code class="docutils literal notranslate"><span class="pre">params_to_rgb()</span></code></a></li>
-<li class="toctree-l2"><a class="reference internal" href="script.html#sandman.sandman.params_to_standard"><code class="docutils literal notranslate"><span class="pre">params_to_standard()</span></code></a></li>
-<li class="toctree-l2"><a class="reference internal" href="script.html#sandman.sandman.simulate_cvd"><code class="docutils literal notranslate"><span class="pre">simulate_cvd()</span></code></a></li>
-<li class="toctree-l2"><a class="reference internal" href="script.html#sandman.sandman.simulate_grayscale"><code class="docutils literal notranslate"><span class="pre">simulate_grayscale()</span></code></a></li>
-</ul>
-</li>
-<li class="toctree-l1"><a class="reference internal" href="faq.html">Frequently asked questions</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="faq.html#what-s-with-the-logo">What’s with the logo?</a></li>
-</ul>
-</li>
-<li class="toctree-l1"><a class="reference internal" href="genindex.html">Index</a></li>
-</ul>
+          <section id="command-line-interface">
+<h1>Command-line interface<a class="headerlink" href="#command-line-interface" title="Permalink to this heading">#</a></h1>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>python -m sandman ...
+</pre></div>
 </div>
+<section id="common-arguments">
+<h2>Common arguments<a class="headerlink" href="#common-arguments" title="Permalink to this heading">#</a></h2>
+<dl class="std option">
+<dt class="sig sig-object std" id="cmdoption-sandman-help">
+<span id="cmdoption-sandman-h"></span><span class="sig-name descname"><span class="pre">--help</span></span><span class="sig-prename descclassname"></span><span class="sig-prename descclassname"><span class="pre">,</span> </span><span class="sig-name descname"><span class="pre">-h</span></span><span class="sig-prename descclassname"></span><a class="headerlink" href="#cmdoption-sandman-help" title="Permalink to this definition">#</a></dt>
+<dd><p>Print the help message for <span class="rainbow" style="font-style: italic"><span style="color: #ff0000">s</span><span style="color: #ffd400">a</span><span style="color: #54ff00">n</span><span style="color: #00ff7f">d</span><span style="color: #00a9ff">m</span><span style="color: #2a00ff">a</span><span style="color: #ff00fe">n</span></span> or any subcommand of it.</p>
+</dd></dl>
+
+<dl class="std option">
+<dt class="sig sig-object std" id="cmdoption-sandman-boring">
+<span class="sig-name descname"><span class="pre">--boring</span></span><span class="sig-prename descclassname"></span><a class="headerlink" href="#cmdoption-sandman-boring" title="Permalink to this definition">#</a></dt>
+<dd><p>Refrain from using terminal escapes to make certain text elements look
+like rainbow vomit.</p>
+</dd></dl>
+
+</section>
+<section id="generating-new-colormaps">
+<h2>Generating new colormaps<a class="headerlink" href="#generating-new-colormaps" title="Permalink to this heading">#</a></h2>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>python -m sandman optimize ...
+</pre></div>
+</div>
+<section id="basic-subcommand-arguments">
+<h3>Basic subcommand arguments<a class="headerlink" href="#basic-subcommand-arguments" title="Permalink to this heading">#</a></h3>
+<dl class="std option">
+<dt class="sig sig-object std" id="cmdoption-optimize-save">
+<span class="sig-name descname"><span class="pre">--save</span></span><span class="sig-prename descclassname"><span class="pre">=file</span></span><a class="headerlink" href="#cmdoption-optimize-save" title="Permalink to this definition">#</a></dt>
+<dd><p>Save the output data as JSON in the given file, overwriting any
+previous content. If this option is not used, the output is printed
+to <code class="code docutils literal notranslate"><span class="pre">stdout</span></code>.</p>
+</dd></dl>
+
+<dl class="std option">
+<dt class="sig sig-object std" id="cmdoption-optimize-pool">
+<span class="sig-name descname"><span class="pre">--pool</span></span><span class="sig-prename descclassname"><span class="pre">=number</span></span><a class="headerlink" href="#cmdoption-optimize-pool" title="Permalink to this definition">#</a></dt>
+<dd><p>Number of random colors in the pool from which colormap colors are
+chosen. If explicit colors are listed, this option does nothing.</p>
+</dd></dl>
+
+<dl class="std option">
+<dt class="sig sig-object std" id="cmdoption-optimize-count">
+<span class="sig-name descname"><span class="pre">--count</span></span><span class="sig-prename descclassname"><span class="pre">=number</span></span><a class="headerlink" href="#cmdoption-optimize-count" title="Permalink to this definition">#</a></dt>
+<dd><p>Maximum number of colors that should appear in each map. In general,
+including more colors in a map requires more effort to optimize, since
+each color in the map adds two degrees of freedom to the optimization
+problem.</p>
+</dd></dl>
+
+<dl class="std option">
+<dt class="sig sig-object std" id="cmdoption-optimize-exact">
+<span class="sig-name descname"><span class="pre">--exact</span></span><span class="sig-prename descclassname"></span><a class="headerlink" href="#cmdoption-optimize-exact" title="Permalink to this definition">#</a></dt>
+<dd><p>By default, all permutations of color sequences of length 3 to <code class="code docutils literal notranslate"><span class="pre">count</span></code>
+are attempted. This flag changes that behavior and limits the optimization
+to colormaps with exactly <code class="code docutils literal notranslate"><span class="pre">count</span></code> colors.</p>
+</dd></dl>
+
+<dl class="std option">
+<dt class="sig sig-object std" id="cmdoption-optimize-nproc">
+<span class="sig-name descname"><span class="pre">--nproc</span></span><span class="sig-prename descclassname"><span class="pre">=number</span></span><a class="headerlink" href="#cmdoption-optimize-nproc" title="Permalink to this definition">#</a></dt>
+<dd><p>Number of processors to use during optimization. This code is
+“embarrasingly parallel,” meaning that different color permutations
+can be solved independently at the same time.
+<a class="hxr-hoverxref hxr-tooltip reference external" href="https://docs.python.org/3/library/concurrent.futures.html#concurrent.futures.ProcessPoolExecutor" title="(in Python v3.10)"><code class="xref py py-class docutils literal notranslate"><span class="pre">concurrent.futures.ProcessPoolExecutor</span></code></a> is used to parallelize
+the loop over color permutations. By default, only one processor is used.</p>
+</dd></dl>
+
+<dl class="std option">
+<dt class="sig sig-object std" id="cmdoption-optimize-kind">
+<span class="sig-name descname"><span class="pre">--kind</span></span><span class="sig-prename descclassname"><span class="pre">={sequential,diverging,cyclic}</span></span><a class="headerlink" href="#cmdoption-optimize-kind" title="Permalink to this definition">#</a></dt>
+<dd><p>Kind of colormap to generate. Sequential colormaps increase linearly
+in intensity, while diverging and cyclic maps are non-monotonic.
+Diverging maps will have an intensity peak in the middle. Cyclic
+maps have the same color and intensity at the two ends, making them
+ideal for plotting quantities like angles that naturally “wrap around.”</p>
+</dd></dl>
+
+</section>
+<section id="advanced-subcommand-arguments">
+<h3>Advanced subcommand arguments<a class="headerlink" href="#advanced-subcommand-arguments" title="Permalink to this heading">#</a></h3>
+<dl class="std option">
+<dt class="sig sig-object std" id="cmdoption-optimize-lightdark">
+<span class="sig-name descname"><span class="pre">--lightdark</span></span><span class="sig-prename descclassname"><span class="pre">=number</span></span><a class="headerlink" href="#cmdoption-optimize-lightdark" title="Permalink to this definition">#</a></dt>
+<dd><p>If maps appear too dark overall, this option can be used to boost the
+lightness across the map. The value should be an integer in the range
+[0, 100]. Keep in mind that lightness in the HSL space cannot exceed unity,
+though, so this argument, if used, should be small.</p>
+</dd></dl>
+
+<dl class="std option">
+<dt class="sig sig-object std" id="cmdoption-optimize-saturate">
+<span class="sig-name descname"><span class="pre">--saturate</span></span><span class="sig-prename descclassname"><span class="pre">=number</span></span><a class="headerlink" href="#cmdoption-optimize-saturate" title="Permalink to this definition">#</a></dt>
+<dd><p>Similarly, maps may appear washed-out or desaturated overall, so this
+option can be used to boost the overall saturation. The value should be
+an integer in the range [0, 100]. Keep in mind that saturation in the
+HSL space cannot exceed unity, though, so this argument, if used,
+should be small.</p>
+</dd></dl>
+
+<dl class="std option">
+<dt class="sig sig-object std" id="cmdoption-optimize-lowval">
+<span class="sig-name descname"><span class="pre">--lowval</span></span><span class="sig-prename descclassname"><span class="pre">=number</span></span><a class="headerlink" href="#cmdoption-optimize-lowval" title="Permalink to this definition">#</a></dt>
+<dd><p>Minimum value of perceived intensity; on a sequential map, this is the
+intensity at the far left edge of the map. The value should be an integer
+in the range [0, 100]. The default is 40.</p>
+</dd></dl>
+
+<dl class="std option">
+<dt class="sig sig-object std" id="cmdoption-optimize-highval">
+<span class="sig-name descname"><span class="pre">--highval</span></span><span class="sig-prename descclassname"><span class="pre">=number</span></span><a class="headerlink" href="#cmdoption-optimize-highval" title="Permalink to this definition">#</a></dt>
+<dd><p>Maximum value of perceived intensity; on a sequential map, this is the
+intensity at the far right edge of the map. The value should be an integer
+in the range [0, 100]. The default is 90.</p>
+</dd></dl>
+
+</section>
+<section id="example">
+<h3>Example<a class="headerlink" href="#example" title="Permalink to this heading">#</a></h3>
+<pre class="literal-block">python -m sandman optimize --nproc=16 --kind=sequential --save=sequential.json --count=4 --exact --saturate=20 <span style="color: #bf616a">bf616a</span> <span style="color: #d08770">d08770</span> <span style="color: #ebcb8b">ebcb8b</span> <span style="color: #a3be8c">a3be8c</span> <span style="color: #81a1c1">81a1c1</span> <span style="color: #b48ead">b48ead</span></pre>
+</section>
+</section>
+<section id="previewing-colormaps">
+<h2>Previewing colormaps<a class="headerlink" href="#previewing-colormaps" title="Permalink to this heading">#</a></h2>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>python -m sandman preview ...
+</pre></div>
+</div>
+<section id="subcommand-arguments">
+<h3>Subcommand arguments<a class="headerlink" href="#subcommand-arguments" title="Permalink to this heading">#</a></h3>
+<dl class="std option">
+<dt class="sig sig-object std" id="cmdoption-preview-rows">
+<span class="sig-name descname"><span class="pre">--rows</span></span><span class="sig-prename descclassname"><span class="pre">=number</span></span><a class="headerlink" href="#cmdoption-preview-rows" title="Permalink to this definition">#</a></dt>
+<dd><p>Number of rows of colormaps shown in the output image. The total height
+scales linearly with the number of rows. The default value is 10.</p>
+</dd></dl>
+
+<dl class="std option">
+<dt class="sig sig-object std" id="cmdoption-preview-cols">
+<span class="sig-name descname"><span class="pre">--cols</span></span><span class="sig-prename descclassname"><span class="pre">=number</span></span><a class="headerlink" href="#cmdoption-preview-cols" title="Permalink to this definition">#</a></dt>
+<dd><p>Number of columns of colormaps shown in the output image. The total width
+scales linearly with the number of columns. The default value is 2.</p>
+</dd></dl>
+
+<dl class="std option">
+<dt class="sig sig-object std" id="cmdoption-preview-save">
+<span class="sig-name descname"><span class="pre">--save</span></span><span class="sig-prename descclassname"><span class="pre">=file</span></span><a class="headerlink" href="#cmdoption-preview-save" title="Permalink to this definition">#</a></dt>
+<dd><p>Save the output image to the given file, overwriting any previous content.
+The image format corresponding to the file extension is used. If this option
+is not used, the image is shown in a window.</p>
+</dd></dl>
+
+</section>
+<section id="id1">
+<h3>Example<a class="headerlink" href="#id1" title="Permalink to this heading">#</a></h3>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>python -m sandman preview sequential.json --rows=10 --cols=1
+</pre></div>
+</div>
+<a class="reference internal image-reference" href="_images/sequential.png"><img alt="Possible output from the preview subcommand" src="_images/sequential.png" style="width: 100%;" /></a>
+</section>
+</section>
+<section id="simulating-color-vision-deficiency">
+<h2>Simulating color vision deficiency<a class="headerlink" href="#simulating-color-vision-deficiency" title="Permalink to this heading">#</a></h2>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>python -m sandman simulate ...
+</pre></div>
+</div>
+<section id="id2">
+<h3>Subcommand arguments<a class="headerlink" href="#id2" title="Permalink to this heading">#</a></h3>
+<dl class="std option">
+<dt class="sig sig-object std" id="cmdoption-simulate-rows">
+<span class="sig-name descname"><span class="pre">--rows</span></span><span class="sig-prename descclassname"><span class="pre">=number</span></span><a class="headerlink" href="#cmdoption-simulate-rows" title="Permalink to this definition">#</a></dt>
+<dd><p>Number of rows of colormaps shown in the output image. The total height
+scales linearly with the number of rows. The default value is 10.</p>
+</dd></dl>
+
+<dl class="std option">
+<dt class="sig sig-object std" id="cmdoption-simulate-cols">
+<span class="sig-name descname"><span class="pre">--cols</span></span><span class="sig-prename descclassname"><span class="pre">=number</span></span><a class="headerlink" href="#cmdoption-simulate-cols" title="Permalink to this definition">#</a></dt>
+<dd><p>Number of columns of colormaps shown in the output image. The total width
+scales linearly with the number of columns. The default value is 2.</p>
+</dd></dl>
+
+<dl class="std option">
+<dt class="sig sig-object std" id="cmdoption-simulate-save">
+<span class="sig-name descname"><span class="pre">--save</span></span><span class="sig-prename descclassname"><span class="pre">=file</span></span><a class="headerlink" href="#cmdoption-simulate-save" title="Permalink to this definition">#</a></dt>
+<dd><p>Save the output image to the given file, overwriting any previous content.
+The image format corresponding to the file extension is used. If this option
+is not used, the image is shown in a window.</p>
+</dd></dl>
+
+<dl class="std option">
+<dt class="sig sig-object std" id="cmdoption-simulate-cvd">
+<span class="sig-name descname"><span class="pre">--cvd</span></span><span class="sig-prename descclassname"><span class="pre">={protanomaly,deuteranomaly,tritanomaly,achromatomaly}</span></span><a class="headerlink" href="#cmdoption-simulate-cvd" title="Permalink to this definition">#</a></dt>
+<dd><p>Type of color vision deficiency (CVD) to apply to the colormap preview image.</p>
+</dd></dl>
+
+</section>
+<section id="id3">
+<h3>Example<a class="headerlink" href="#id3" title="Permalink to this heading">#</a></h3>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>python -m sandman simulate sequential.json --rows=10 --cols=1 --cvd=protanomaly --severity=50
+</pre></div>
+</div>
+<a class="reference internal image-reference" href="_images/protanomaly.png"><img alt="Possible output from the simulate subcommand" src="_images/protanomaly.png" style="width: 100%;" /></a>
+</section>
+</section>
 </section>
 
         </article>
@@ -472,16 +636,26 @@
       <footer>
         
         <div class="related-pages">
-          <a class="next-page" href="motivation.html">
+          <a class="next-page" href="script.html">
               <div class="page-info">
                 <div class="context">
                   <span>Next</span>
                 </div>
-                <div class="title">Project motivation</div>
+                <div class="title">Scripting interface</div>
               </div>
               <svg class="furo-related-icon"><use href="#svg-arrow-right"></use></svg>
             </a>
-          
+          <a class="prev-page" href="installation.html">
+              <svg class="furo-related-icon"><use href="#svg-arrow-right"></use></svg>
+              <div class="page-info">
+                <div class="context">
+                  <span>Previous</span>
+                </div>
+                
+                <div class="title">Downloading and installing</div>
+                
+              </div>
+            </a>
         </div>
         <div class="bottom-of-page">
           <div class="left-details">
@@ -502,8 +676,43 @@
         
       </footer>
     </div>
-    <aside class="toc-drawer no-toc">
+    <aside class="toc-drawer">
       
+      
+      <div class="toc-sticky toc-scroll">
+        <div class="toc-title-container">
+          <span class="toc-title">
+            On this page
+          </span>
+        </div>
+        <div class="toc-tree-container">
+          <div class="toc-tree">
+            <ul>
+<li><a class="reference internal" href="#">Command-line interface</a><ul>
+<li><a class="reference internal" href="#common-arguments">Common arguments</a></li>
+<li><a class="reference internal" href="#generating-new-colormaps">Generating new colormaps</a><ul>
+<li><a class="reference internal" href="#basic-subcommand-arguments">Basic subcommand arguments</a></li>
+<li><a class="reference internal" href="#advanced-subcommand-arguments">Advanced subcommand arguments</a></li>
+<li><a class="reference internal" href="#example">Example</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#previewing-colormaps">Previewing colormaps</a><ul>
+<li><a class="reference internal" href="#subcommand-arguments">Subcommand arguments</a></li>
+<li><a class="reference internal" href="#id1">Example</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#simulating-color-vision-deficiency">Simulating color vision deficiency</a><ul>
+<li><a class="reference internal" href="#id2">Subcommand arguments</a></li>
+<li><a class="reference internal" href="#id3">Example</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+
+          </div>
+        </div>
+      </div>
       
       
     </aside>

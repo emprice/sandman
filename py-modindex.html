@@ -2,8 +2,9 @@
 <html class="no-js" lang="en">
   <head><meta charset="utf-8"/>
     <meta name="viewport" content="width=device-width,initial-scale=1"/>
-    <meta name="color-scheme" content="light dark"><meta name="generator" content="Docutils 0.19: https://docutils.sourceforge.io/" />
-
+    <meta name="color-scheme" content="light dark">
+    <link href="_static/fonts/Pacifico-Regular.ttf" rel="preload" as="font" type="font/ttf">
+    
     <link href="_static/fonts/Raleway-Regular.ttf" rel="preload" as="font" type="font/ttf">
     <link href="_static/fonts/Raleway-Italic.ttf" rel="preload" as="font" type="font/ttf">
     <link href="_static/fonts/Raleway-Bold.ttf" rel="preload" as="font" type="font/ttf">
@@ -12,14 +13,23 @@
     <link href="_static/fonts/SourceCodePro-Italic.ttf" rel="preload" as="font" type="font/ttf">
     <link href="_static/fonts/SourceCodePro-Bold.ttf" rel="preload" as="font" type="font/ttf">
     <link href="_static/fonts/SourceCodePro-BoldItalic.ttf" rel="preload" as="font" type="font/ttf">
-    <link rel="index" title="Index" href="genindex.html" /><link rel="search" title="Search" href="search.html" /><link rel="prev" title="sandman: Procedurally generate perceptually uniform colormaps" href="index.html" />
+    <link rel="index" title="Index" href="genindex.html" /><link rel="search" title="Search" href="search.html" />
 
 
-    <meta name="generator" content="sphinx-5.2.3, furo 2022.09.29"/>
-        <title>Python interface - sandman</title>
-      <link rel="stylesheet" type="text/css" href="_static/pygments.css" />
+
+    <link rel="shortcut icon" href="_static/favicon.ico"/><meta name="generator" content="sphinx-5.2.3, furo 2022.09.29"/><title>Python Module Index - sandman</title>
+<link rel="stylesheet" type="text/css" href="_static/pygments.css" />
     <link rel="stylesheet" type="text/css" href="_static/styles/furo.css?digest=d81277517bee4d6b0349d71bb2661d4890b5617c" />
+    <link rel="stylesheet" type="text/css" href="_static/css/tooltipster.custom.css" />
+    <link rel="stylesheet" type="text/css" href="_static/css/tooltipster.bundle.min.css" />
+    <link rel="stylesheet" type="text/css" href="_static/css/tooltipster-sideTip-shadow.min.css" />
+    <link rel="stylesheet" type="text/css" href="_static/css/tooltipster-sideTip-punk.min.css" />
+    <link rel="stylesheet" type="text/css" href="_static/css/tooltipster-sideTip-noir.min.css" />
+    <link rel="stylesheet" type="text/css" href="_static/css/tooltipster-sideTip-light.min.css" />
+    <link rel="stylesheet" type="text/css" href="_static/css/tooltipster-sideTip-borderless.min.css" />
+    <link rel="stylesheet" type="text/css" href="_static/css/micromodal.css" />
     <link rel="stylesheet" type="text/css" href="_static/styles/furo-extensions.css?digest=30d1aed668e5c3a91c3e3bf6a60b675221979f0e" />
+    <link rel="stylesheet" type="text/css" href="_static/custom.css" />
     
     
 
@@ -184,6 +194,7 @@
   }
 </style>
     
+    
     <style>
     @font-face {
         font-family: 'Raleway';
@@ -235,6 +246,15 @@
     }
     body { font-size: 16pt; }
     .sidebar-brand-text { display: none; }
+    </style>
+
+    <style>
+    @font-face {
+        font-family: 'Pacifico';
+        src: url('_static/fonts/Pacifico-Regular.ttf');
+        font-weight: 400;
+        font-style: normal;
+    }
     </style>
 </head>
   <body>
@@ -360,8 +380,13 @@
 </form>
 <div id="searchbox"></div><div class="sidebar-scroll"><div class="sidebar-tree">
   <p class="caption" role="heading"><span class="caption-text">Contents:</span></p>
-<ul class="current">
-<li class="toctree-l1 current current-page"><a class="current reference internal" href="#">Python interface</a></li>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="motivation.html">Project motivation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="installation.html">Downloading and installing</a></li>
+<li class="toctree-l1"><a class="reference internal" href="cli.html">Command-line interface</a></li>
+<li class="toctree-l1"><a class="reference internal" href="script.html">Scripting interface</a></li>
+<li class="toctree-l1"><a class="reference internal" href="faq.html">Frequently asked questions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="genindex.html">Index</a></li>
 </ul>
 
 </div>
@@ -381,8 +406,7 @@
           <span>Back to top</span>
         </a>
         <div class="content-icon-container">
-          
-<div class="theme-toggle-container theme-toggle-content">
+          <div class="theme-toggle-container theme-toggle-content">
             <button class="theme-toggle">
               <div class="visually-hidden">Toggle Light / Dark / Auto color theme</div>
               <svg class="theme-icon-when-auto"><use href="#svg-sun-half"></use></svg>
@@ -396,9 +420,32 @@
           </label>
         </div>
         <article role="main">
-          <section id="python-interface">
-<h1>Python interface<a class="headerlink" href="#python-interface" title="Permalink to this heading">#</a></h1>
+          
+<section class="domainindex-section">
+  <h1>Python Module Index</h1>
+  <div class="domainindex-jumpbox"><a href="#cap-s"><strong>s</strong></a></div>
 </section>
+<table class="domainindex-table">
+  <tr class="pcap">
+    <td></td><td>&#160;</td><td></td>
+  </tr>
+  <tr class="cap" id="cap-s">
+    <td></td><td><strong>s</strong></td><td></td>
+  </tr>
+  <tr>
+    <td><img src="_static/minus.png" class="toggler"
+              id="toggle-1" style="display: none" alt="-" /></td>
+    <td>
+        <code class="xref">sandman</code></td><td>
+    <em></em></td>
+  </tr>
+  <tr class="cg-1">
+    <td></td>
+    <td>&#160;&#160;&#160;
+        <a href="script.html#module-sandman.sandman"><code class="xref">sandman.sandman</code></a></td><td>
+    <em></em></td>
+  </tr>
+</table>
 
         </article>
       </div>
@@ -406,17 +453,7 @@
         
         <div class="related-pages">
           
-          <a class="prev-page" href="index.html">
-              <svg class="furo-related-icon"><use href="#svg-arrow-right"></use></svg>
-              <div class="page-info">
-                <div class="context">
-                  <span>Previous</span>
-                </div>
-                
-                <div class="title">Home</div>
-                
-              </div>
-            </a>
+          
         </div>
         <div class="bottom-of-page">
           <div class="left-details">
@@ -450,5 +487,9 @@
     <script src="_static/doctools.js"></script>
     <script src="_static/sphinx_highlight.js"></script>
     <script src="_static/scripts/furo.js"></script>
+    <script src="_static/js/hoverxref.js"></script>
+    <script src="_static/js/tooltipster.bundle.min.js"></script>
+    <script src="_static/js/micromodal.min.js"></script>
+    <script async="async" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     </body>
 </html>

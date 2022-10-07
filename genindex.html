@@ -3,6 +3,8 @@
   <head><meta charset="utf-8"/>
     <meta name="viewport" content="width=device-width,initial-scale=1"/>
     <meta name="color-scheme" content="light dark">
+    <link href="_static/fonts/Pacifico-Regular.ttf" rel="preload" as="font" type="font/ttf">
+    
     <link href="_static/fonts/Raleway-Regular.ttf" rel="preload" as="font" type="font/ttf">
     <link href="_static/fonts/Raleway-Italic.ttf" rel="preload" as="font" type="font/ttf">
     <link href="_static/fonts/Raleway-Bold.ttf" rel="preload" as="font" type="font/ttf">
@@ -14,10 +16,20 @@
     <link rel="index" title="Index" href="#" /><link rel="search" title="Search" href="search.html" />
 
 
-    <meta name="generator" content="sphinx-5.2.3, furo 2022.09.29"/><title>Index - sandman</title>
+
+    <link rel="shortcut icon" href="_static/favicon.ico"/><meta name="generator" content="sphinx-5.2.3, furo 2022.09.29"/><title>Index - sandman</title>
 <link rel="stylesheet" type="text/css" href="_static/pygments.css" />
     <link rel="stylesheet" type="text/css" href="_static/styles/furo.css?digest=d81277517bee4d6b0349d71bb2661d4890b5617c" />
+    <link rel="stylesheet" type="text/css" href="_static/css/tooltipster.custom.css" />
+    <link rel="stylesheet" type="text/css" href="_static/css/tooltipster.bundle.min.css" />
+    <link rel="stylesheet" type="text/css" href="_static/css/tooltipster-sideTip-shadow.min.css" />
+    <link rel="stylesheet" type="text/css" href="_static/css/tooltipster-sideTip-punk.min.css" />
+    <link rel="stylesheet" type="text/css" href="_static/css/tooltipster-sideTip-noir.min.css" />
+    <link rel="stylesheet" type="text/css" href="_static/css/tooltipster-sideTip-light.min.css" />
+    <link rel="stylesheet" type="text/css" href="_static/css/tooltipster-sideTip-borderless.min.css" />
+    <link rel="stylesheet" type="text/css" href="_static/css/micromodal.css" />
     <link rel="stylesheet" type="text/css" href="_static/styles/furo-extensions.css?digest=30d1aed668e5c3a91c3e3bf6a60b675221979f0e" />
+    <link rel="stylesheet" type="text/css" href="_static/custom.css" />
     
     
 
@@ -182,6 +194,7 @@
   }
 </style>
     
+    
     <style>
     @font-face {
         font-family: 'Raleway';
@@ -233,6 +246,15 @@
     }
     body { font-size: 16pt; }
     .sidebar-brand-text { display: none; }
+    </style>
+
+    <style>
+    @font-face {
+        font-family: 'Pacifico';
+        src: url('_static/fonts/Pacifico-Regular.ttf');
+        font-weight: 400;
+        font-style: normal;
+    }
     </style>
 </head>
   <body>
@@ -358,8 +380,13 @@
 </form>
 <div id="searchbox"></div><div class="sidebar-scroll"><div class="sidebar-tree">
   <p class="caption" role="heading"><span class="caption-text">Contents:</span></p>
-<ul>
-<li class="toctree-l1"><a class="reference internal" href="sandman.html">Python interface</a></li>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="motivation.html">Project motivation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="installation.html">Downloading and installing</a></li>
+<li class="toctree-l1"><a class="reference internal" href="cli.html">Command-line interface</a></li>
+<li class="toctree-l1"><a class="reference internal" href="script.html">Scripting interface</a></li>
+<li class="toctree-l1"><a class="reference internal" href="faq.html">Frequently asked questions</a></li>
+<li class="toctree-l1 current current-page"><a class="current reference internal" href="#">Index</a></li>
 </ul>
 
 </div>
@@ -396,8 +423,334 @@
           
 <section class="genindex-section">
   <h1 id="index">Index</h1>
-  <div class="genindex-jumpbox"></div>
+  <div class="genindex-jumpbox"><a href="#Symbols"><strong>Symbols</strong></a> | <a href="#C"><strong>C</strong></a> | <a href="#F"><strong>F</strong></a> | <a href="#I"><strong>I</strong></a> | <a href="#M"><strong>M</strong></a> | <a href="#O"><strong>O</strong></a> | <a href="#P"><strong>P</strong></a> | <a href="#S"><strong>S</strong></a></div>
 </section>
+<section id="Symbols" class="genindex-section">
+  <h2>Symbols</h2>
+  <table style="width: 100%" class="indextable genindextable"><tr>
+    <td style="width: 33%; vertical-align: top;"><ul>
+        <li>
+    --boring
+
+        <ul>
+          <li><a href="cli.html#cmdoption-sandman-boring">sandman command line option</a>
+</li>
+        </ul></li>
+        <li>
+    --cols
+
+        <ul>
+          <li><a href="cli.html#cmdoption-preview-cols">preview command line option</a>
+</li>
+          <li><a href="cli.html#cmdoption-simulate-cols">simulate command line option</a>
+</li>
+        </ul></li>
+        <li>
+    --count
+
+        <ul>
+          <li><a href="cli.html#cmdoption-optimize-count">optimize command line option</a>
+</li>
+        </ul></li>
+        <li>
+    --cvd
+
+        <ul>
+          <li><a href="cli.html#cmdoption-simulate-cvd">simulate command line option</a>
+</li>
+        </ul></li>
+        <li>
+    --exact
+
+        <ul>
+          <li><a href="cli.html#cmdoption-optimize-exact">optimize command line option</a>
+</li>
+        </ul></li>
+        <li>
+    --force-reinstall
+
+        <ul>
+          <li><a href="installation.html#cmdoption-force-reinstall">command line option</a>
+</li>
+        </ul></li>
+        <li>
+    --help
+
+        <ul>
+          <li><a href="cli.html#cmdoption-sandman-help">sandman command line option</a>
+</li>
+        </ul></li>
+        <li>
+    --highval
+
+        <ul>
+          <li><a href="cli.html#cmdoption-optimize-highval">optimize command line option</a>
+</li>
+        </ul></li>
+        <li>
+    --ignore-installed
+
+        <ul>
+          <li><a href="installation.html#cmdoption-ignore-installed">command line option</a>
+</li>
+        </ul></li>
+        <li>
+    --kind
+
+        <ul>
+          <li><a href="cli.html#cmdoption-optimize-kind">optimize command line option</a>
+</li>
+        </ul></li>
+    </ul></td>
+    <td style="width: 33%; vertical-align: top;"><ul>
+        <li>
+    --lightdark
+
+        <ul>
+          <li><a href="cli.html#cmdoption-optimize-lightdark">optimize command line option</a>
+</li>
+        </ul></li>
+        <li>
+    --lowval
+
+        <ul>
+          <li><a href="cli.html#cmdoption-optimize-lowval">optimize command line option</a>
+</li>
+        </ul></li>
+        <li>
+    --nproc
+
+        <ul>
+          <li><a href="cli.html#cmdoption-optimize-nproc">optimize command line option</a>
+</li>
+        </ul></li>
+        <li>
+    --pool
+
+        <ul>
+          <li><a href="cli.html#cmdoption-optimize-pool">optimize command line option</a>
+</li>
+        </ul></li>
+        <li>
+    --rows
+
+        <ul>
+          <li><a href="cli.html#cmdoption-preview-rows">preview command line option</a>
+</li>
+          <li><a href="cli.html#cmdoption-simulate-rows">simulate command line option</a>
+</li>
+        </ul></li>
+        <li>
+    --saturate
+
+        <ul>
+          <li><a href="cli.html#cmdoption-optimize-saturate">optimize command line option</a>
+</li>
+        </ul></li>
+        <li>
+    --save
+
+        <ul>
+          <li><a href="cli.html#cmdoption-optimize-save">optimize command line option</a>
+</li>
+          <li><a href="cli.html#cmdoption-preview-save">preview command line option</a>
+</li>
+          <li><a href="cli.html#cmdoption-simulate-save">simulate command line option</a>
+</li>
+        </ul></li>
+        <li>
+    --user
+
+        <ul>
+          <li><a href="installation.html#cmdoption-user">command line option</a>
+</li>
+        </ul></li>
+        <li>
+    -h
+
+        <ul>
+          <li><a href="cli.html#cmdoption-sandman-help">sandman command line option</a>
+</li>
+        </ul></li>
+    </ul></td>
+  </tr></table>
+</section>
+
+<section id="C" class="genindex-section">
+  <h2>C</h2>
+  <table style="width: 100%" class="indextable genindextable"><tr>
+    <td style="width: 33%; vertical-align: top;"><ul>
+        <li><a href="script.html#sandman.sandman.cmap_from_params">cmap_from_params() (in module sandman.sandman)</a>
+</li>
+        <li>
+    command line option
+
+        <ul>
+          <li><a href="installation.html#cmdoption-force-reinstall">--force-reinstall</a>
+</li>
+          <li><a href="installation.html#cmdoption-ignore-installed">--ignore-installed</a>
+</li>
+          <li><a href="installation.html#cmdoption-user">--user</a>
+</li>
+        </ul></li>
+    </ul></td>
+  </tr></table>
+</section>
+
+<section id="F" class="genindex-section">
+  <h2>F</h2>
+  <table style="width: 100%" class="indextable genindextable"><tr>
+    <td style="width: 33%; vertical-align: top;"><ul>
+        <li><a href="script.html#sandman.sandman.find_optimal_params">find_optimal_params() (in module sandman.sandman)</a>
+</li>
+    </ul></td>
+    <td style="width: 33%; vertical-align: top;"><ul>
+        <li><a href="script.html#sandman.sandman.find_optimal_params_diverging">find_optimal_params_diverging() (in module sandman.sandman)</a>
+</li>
+        <li><a href="script.html#sandman.sandman.find_optimal_params_sequential">find_optimal_params_sequential() (in module sandman.sandman)</a>
+</li>
+    </ul></td>
+  </tr></table>
+</section>
+
+<section id="I" class="genindex-section">
+  <h2>I</h2>
+  <table style="width: 100%" class="indextable genindextable"><tr>
+    <td style="width: 33%; vertical-align: top;"><ul>
+        <li><a href="script.html#sandman.sandman.interpolate_diverging">interpolate_diverging() (in module sandman.sandman)</a>
+</li>
+    </ul></td>
+    <td style="width: 33%; vertical-align: top;"><ul>
+        <li><a href="script.html#sandman.sandman.interpolate_sequential">interpolate_sequential() (in module sandman.sandman)</a>
+</li>
+    </ul></td>
+  </tr></table>
+</section>
+
+<section id="M" class="genindex-section">
+  <h2>M</h2>
+  <table style="width: 100%" class="indextable genindextable"><tr>
+    <td style="width: 33%; vertical-align: top;"><ul>
+        <li><a href="script.html#sandman.sandman.modify_color">modify_color() (in module sandman.sandman)</a>
+</li>
+    </ul></td>
+    <td style="width: 33%; vertical-align: top;"><ul>
+        <li>
+    module
+
+        <ul>
+          <li><a href="script.html#module-sandman.sandman">sandman.sandman</a>
+</li>
+        </ul></li>
+    </ul></td>
+  </tr></table>
+</section>
+
+<section id="O" class="genindex-section">
+  <h2>O</h2>
+  <table style="width: 100%" class="indextable genindextable"><tr>
+    <td style="width: 33%; vertical-align: top;"><ul>
+        <li>
+    optimize command line option
+
+        <ul>
+          <li><a href="cli.html#cmdoption-optimize-count">--count</a>
+</li>
+          <li><a href="cli.html#cmdoption-optimize-exact">--exact</a>
+</li>
+          <li><a href="cli.html#cmdoption-optimize-highval">--highval</a>
+</li>
+          <li><a href="cli.html#cmdoption-optimize-kind">--kind</a>
+</li>
+          <li><a href="cli.html#cmdoption-optimize-lightdark">--lightdark</a>
+</li>
+          <li><a href="cli.html#cmdoption-optimize-lowval">--lowval</a>
+</li>
+          <li><a href="cli.html#cmdoption-optimize-nproc">--nproc</a>
+</li>
+          <li><a href="cli.html#cmdoption-optimize-pool">--pool</a>
+</li>
+          <li><a href="cli.html#cmdoption-optimize-saturate">--saturate</a>
+</li>
+          <li><a href="cli.html#cmdoption-optimize-save">--save</a>
+</li>
+        </ul></li>
+    </ul></td>
+  </tr></table>
+</section>
+
+<section id="P" class="genindex-section">
+  <h2>P</h2>
+  <table style="width: 100%" class="indextable genindextable"><tr>
+    <td style="width: 33%; vertical-align: top;"><ul>
+        <li><a href="script.html#sandman.sandman.params_to_cam">params_to_cam() (in module sandman.sandman)</a>
+</li>
+        <li><a href="script.html#sandman.sandman.params_to_rgb">params_to_rgb() (in module sandman.sandman)</a>
+</li>
+        <li><a href="script.html#sandman.sandman.params_to_standard">params_to_standard() (in module sandman.sandman)</a>
+</li>
+    </ul></td>
+    <td style="width: 33%; vertical-align: top;"><ul>
+        <li>
+    preview command line option
+
+        <ul>
+          <li><a href="cli.html#cmdoption-preview-cols">--cols</a>
+</li>
+          <li><a href="cli.html#cmdoption-preview-rows">--rows</a>
+</li>
+          <li><a href="cli.html#cmdoption-preview-save">--save</a>
+</li>
+        </ul></li>
+    </ul></td>
+  </tr></table>
+</section>
+
+<section id="S" class="genindex-section">
+  <h2>S</h2>
+  <table style="width: 100%" class="indextable genindextable"><tr>
+    <td style="width: 33%; vertical-align: top;"><ul>
+        <li>
+    sandman command line option
+
+        <ul>
+          <li><a href="cli.html#cmdoption-sandman-boring">--boring</a>
+</li>
+          <li><a href="cli.html#cmdoption-sandman-help">--help</a>
+</li>
+          <li><a href="cli.html#cmdoption-sandman-help">-h</a>
+</li>
+        </ul></li>
+        <li>
+    sandman.sandman
+
+        <ul>
+          <li><a href="script.html#module-sandman.sandman">module</a>
+</li>
+        </ul></li>
+    </ul></td>
+    <td style="width: 33%; vertical-align: top;"><ul>
+        <li>
+    simulate command line option
+
+        <ul>
+          <li><a href="cli.html#cmdoption-simulate-cols">--cols</a>
+</li>
+          <li><a href="cli.html#cmdoption-simulate-cvd">--cvd</a>
+</li>
+          <li><a href="cli.html#cmdoption-simulate-rows">--rows</a>
+</li>
+          <li><a href="cli.html#cmdoption-simulate-save">--save</a>
+</li>
+        </ul></li>
+        <li><a href="script.html#sandman.sandman.simulate_cvd">simulate_cvd() (in module sandman.sandman)</a>
+</li>
+        <li><a href="script.html#sandman.sandman.simulate_grayscale">simulate_grayscale() (in module sandman.sandman)</a>
+</li>
+    </ul></td>
+  </tr></table>
+</section>
+
 
         </article>
       </div>
@@ -439,5 +792,9 @@
     <script src="_static/doctools.js"></script>
     <script src="_static/sphinx_highlight.js"></script>
     <script src="_static/scripts/furo.js"></script>
+    <script src="_static/js/hoverxref.js"></script>
+    <script src="_static/js/tooltipster.bundle.min.js"></script>
+    <script src="_static/js/micromodal.min.js"></script>
+    <script async="async" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     </body>
 </html>

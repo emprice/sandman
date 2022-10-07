@@ -1,0 +1,29 @@
+/* use soft line-wrapping on literal blocks */
+pre {
+    white-space: pre-wrap !important;
+    padding-left: calc(4em + 10px) !important;
+    text-indent: calc(-4em + 10px) !important;
+}
+
+/* no linebreaks for inline code */
+code {
+    white-space: pre !important;
+}
+
+/* hacks for tooltips */
+.tooltipster-box {
+    color: var(--color-foreground-primary) !important;
+    background-color: var(--color-background-primary) !important;
+}
+.tooltipster-left .tooltipster-arrow-border {
+    border-left-color: var(--color-background-primary) !important;
+}
+.tooltipster-right .tooltipster-arrow-border {
+    border-right-color: var(--color-background-primary) !important;
+}
+.tooltipster-top .tooltipster-arrow-border {
+    border-top-color: var(--color-background-primary) !important;
+}
+.tooltipster-bottom .tooltipster-arrow-border {
+    border-bottom-color: var(--color-background-primary) !important;
+}
