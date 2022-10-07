@@ -1,0 +1,16 @@
+{% extends "!base.html" %}
+{% block linktags %}
+    <link href="{{ pathto('_static/fonts/Pacifico-Regular.ttf', 1) }}" rel="preload" as="font" type="font/ttf">
+    {{ super() }}
+{% endblock %}
+{% block extra_styles %}
+    {{ super() }}
+    <style>
+    @font-face {
+        font-family: 'Pacifico';
+        src: url('{{ pathto('_static/fonts/Pacifico-Regular.ttf', 1) }}');
+        font-weight: 400;
+        font-style: normal;
+    }
+    </style>
+{% endblock %}

@@ -31,70 +31,92 @@ def modify_color(hc, lightdark=1, saturate=1):
     :return: The modified, reconstructed color as a hex code
     :rtype: str
     '''
-
     rgb = np.array(webcolors.hex_to_rgb(hc)) / 255
     h, l, s = colorsys.rgb_to_hls(*rgb)
-    rgb = colorsys.hls_to_rgb(h, min(1, lightdark * l), s=min(1, s * saturate))
+    rgb = colorsys.hls_to_rgb(h, max(0, min(1, lightdark * l)),
+        s=max(0, min(1, s * saturate)))
     return webcolors.rgb_to_hex((np.array(rgb) * 255).astype(int))
 
-def params_to_standard(p, hxs):
+def params_to_standard(p, hxs, ld0, sat0):
     ''' Converts the input parameters into a standard form
 
-    :param p: Input parameters as fed into objective function
-    :type p: :class:`numpy.ndarray`, shape (2 * len(hxs),)
+    :param p: Input parameters as fed into objective function,
+        with shape :code:`(2 * len(hxs),)`
+    :type p: :class:`numpy.ndarray`
     :param hxs: User-specified colors for the current optimization
     :type hxs: list of str
-    :return: Parameters that can be converted to colors
-    :rtype: :class:`numpy.ndarray`, shape (2, len(hxs))
+    :param ld0: Baseline lightness to add after the transform
+    :type ld0: float
+    :param sat0: Baseline saturation to add after the transform
+    :type sat0: float
+    :return: Parameters that can be converted to colors,
+        with shape :code:`(2, len(hxs))`
+    :rtype: :class:`numpy.ndarray`
     '''
-
     p1 = np.exp(p)
-    return np.reshape(p1, (2, len(hxs)))
+    p1 = np.reshape(p1, (2, len(hxs)))
+    p1[0,:] += ld0
+    p1[1,:] += sat0
+    return p1
 
-def params_to_rgb(p, hxs):
+def params_to_rgb(p, hxs, ld0, sat0):
     ''' Converts the input parameters and colors into RGB triples
 
-    :param p: Input parameters as fed into objective function
-    :type p: :class:`numpy.ndarray`, shape (2 * len(hxs),)
+    :param p: Input parameters as fed into objective function,
+        with shape :code:`(2 * len(hxs),)`
+    :type p: :class:`numpy.ndarray`
     :param hxs: User-specified colors for the current optimization
     :type hxs: list of str
-    :return: RGB triples mapped to the [0,1] interval
-    :rtype: :class:`numpy.ndarray`, shape (2, len(hxs))
+    :param ld0: Baseline lightness to add after the transform
+    :type ld0: float
+    :param sat0: Baseline saturation to add after the transform
+    :type sat0: float
+    :return: RGB triples mapped to the [0,1] interval,
+        with shape :code:`(len(hxs), 3)`
+    :rtype: :class:`numpy.ndarray`
     '''
-
-    p1 = params_to_standard(p, hxs)
+    p1 = params_to_standard(p, hxs, ld0, sat0)
     mod = [modify_color(hx, lightdark=ld, saturate=sat) \
         for hx, ld, sat in zip(hxs, p1[0], p1[1])]
     return np.array(list(map(webcolors.hex_to_rgb, mod))) / 255
 
-def params_to_cam(p, hxs):
+def params_to_cam(p, hxs, ld0, sat0):
     ''' Converts the input parameters and colors into CAM02 triples
 
-    :param p: Input parameters as fed into objective function
-    :type p: :class:`numpy.ndarray`, shape (2 * len(hxs),)
+    :param p: Input parameters as fed into objective function,
+        with shape :code:`(2 * len(hxs),)`
+    :type p: :class:`numpy.ndarray`
     :param hxs: User-specified colors for the current optimization
     :type hxs: list of str
-    :return: CAM02 triples on their native intervals
-    :rtype: :class:`numpy.ndarray`, shape (2, len(hxs))
+    :param ld0: Baseline lightness to add after the transform
+    :type ld0: float
+    :param sat0: Baseline saturation to add after the transform
+    :type sat0: float
+    :return: CAM02 triples on their native intervals,
+        with shape :code:`(len(hxs), 3)`
+    :rtype: :class:`numpy.ndarray`
     '''
-
-    rgb = params_to_rgb(p, hxs)
+    rgb = params_to_rgb(p, hxs, ld0, sat0)
     return np.vstack([labfn(tup) for tup in rgb])
 
-def find_optimal_params(hxs, target):
+def find_optimal_params(hxs, target, ld0, sat0):
     ''' Optimizes the given colors such that they have perceptual lightness
     values as close as possible to the given target values
 
     :param hxs: Colors to be optimized
     :type hxs: list of str
-    :param target: Proposed target values for the lightness parameter
-    :type target: :class:`numpy.ndarray`, shape (len(hxs),)
+    :param target: Proposed target values for the lightness parameter,
+        with shape :code:`(len(hxs),)`
+    :type target: :class:`numpy.ndarray`
+    :param ld0: Baseline lightness to add after the transform
+    :type ld0: float
+    :param sat0: Baseline saturation to add after the transform
+    :type sat0: float
     :return: Optimized parameters and value of the objective function
-    :rtype: tuple of `numpy.ndarray` and float
+    :rtype: tuple of :class:`numpy.ndarray` and float
     '''
-
     def objective(p):
-        cam = params_to_cam(p, hxs)
+        cam = params_to_cam(p, hxs, ld0, sat0)
         return np.sum((cam[:,0] - target)**2)
 
     popsize = 100
@@ -109,21 +131,66 @@ def find_optimal_params(hxs, target):
 
     return sol.x, sol.fun
 
-def find_optimal_params_sequential(hxs, min_intensity=55, max_intensity=85):
+def find_optimal_params_sequential(hxs, lightness_base=0,
+saturation_base=0, min_intensity=55, max_intensity=85):
+    ''' Optimizes the given colors by modifying their lightness
+    and saturation to reach a sequential perceived intensity.
 
+    :param hxs: Hex color codes of colors to optimize
+    :type hxs: list of str
+    :param lightness_base: Additive boost for the lightness parameter
+    :type lightness_base: float
+    :param saturation_base: Additive boost for the saturation parameter
+    :type saturation_base: float
+    :param min_intensity: Minimum target perceived intensity
+    :type min_intensity: float
+    :param max_intensity: Maximum target perceived intensity
+    :type max_intensity: float
+    :return: Optimized parameters and value of the objective function
+    :rtype: tuple of :class:`numpy.ndarray` and float
+    '''
     target = np.linspace(min_intensity, max_intensity, len(hxs))
-    return find_optimal_params(hxs, target)
+    return find_optimal_params(hxs, target, lightness_base, saturation_base)
 
-def find_optimal_params_diverging(hxs, min_intensity=55, max_intensity=85):
+def find_optimal_params_diverging(hxs, lightness_base=0,
+saturation_base=0, min_intensity=55, max_intensity=85):
+    ''' Optimizes the given colors by modifying their lightness
+    and saturation to reach a diverging perceived intensity.
 
+    :param hxs: Hex color codes of colors to optimize
+    :type hxs: list of str
+    :param lightness_base: Additive boost for the lightness parameter
+    :type lightness_base: float
+    :param saturation_base: Additive boost for the saturation parameter
+    :type saturation_base: float
+    :param min_intensity: Minimum target perceived intensity
+    :type min_intensity: float
+    :param max_intensity: Maximum target perceived intensity
+    :type max_intensity: float
+    :return: Optimized parameters and value of the objective function
+    :rtype: tuple of :class:`numpy.ndarray` and float
+    '''
     assert len(hxs) % 2 == 1
     tmp = np.linspace(max_intensity, min_intensity, len(hxs) // 2 + 1)
     target = np.concatenate((tmp[::-1], tmp[1:]))
-    return find_optimal_params(hxs, target)
+    return find_optimal_params(hxs, target, lightness_base, saturation_base)
 
-def interpolate_sequential(hxs, params):
+def interpolate_sequential(hxs, params, lightness_base, saturation_base):
+    ''' Performs an interpolation in intensity space between the given colors,
+    assuming the map is sequential.
 
-    cam = params_to_cam(params, hxs)
+    :param hxs: Hex color codes of colors to interpolate
+    :type hxs: list of str
+    :param params: Parameters of the colormap
+    :type params: :class:`numpy.ndarray`
+    :param lightness_base: Additive boost for the lightness parameter
+    :type lightness_base: float
+    :param saturation_base: Additive boost for the saturation parameter
+    :type saturation_base: float
+    :return: Interpolated colors in CAM space
+    :rtype: :class:`numpy.ndarray`
+    '''
+    cam = params_to_cam(params, hxs, lightness_base, saturation_base)
 
     if np.any(np.diff(cam[:,0]) <= 0):
         warnings.warn('Fixing non-monotonicity in intensity')
@@ -134,10 +201,23 @@ def interpolate_sequential(hxs, params):
     xx = np.linspace(np.amin(x), np.amax(x), 250)
     return interp.Akima1DInterpolator(x, cam)(xx)
 
-def interpolate_diverging(hxs, params):
+def interpolate_diverging(hxs, params, lightness_base, saturation_base):
+    ''' Performs an interpolation in intensity space between the given colors,
+    assuming the map is diverging.
 
+    :param hxs: Hex color codes of colors to interpolate
+    :type hxs: list of str
+    :param params: Parameters of the colormap
+    :type params: :class:`numpy.ndarray`
+    :param lightness_base: Additive boost for the lightness parameter
+    :type lightness_base: float
+    :param saturation_base: Additive boost for the saturation parameter
+    :type saturation_base: float
+    :return: Interpolated colors in CAM space
+    :rtype: :class:`numpy.ndarray`
+    '''
     assert len(hxs) % 2 == 1
-    cam = params_to_cam(params, hxs)
+    cam = params_to_cam(params, hxs, lightness_base, saturation_base)
     n = len(hxs)
     N = 250 // (n - 1)
 
@@ -159,12 +239,28 @@ def interpolate_diverging(hxs, params):
 
     return np.concatenate((xx1, xx2[::-1]))
 
-def cmap_from_params(name, hxs, params, kind):
+def cmap_from_params(name, hxs, params, kind, lightness_base, saturation_base):
+    ''' Generates a :mod:`matplotlib` colormap from the given parameters.
 
+    :param name: Name to assign to this colormap
+    :type name: str
+    :param hxs: Hex color codes of colors to interpolate
+    :type hxs: list of str
+    :param params: Parameters of the colormap
+    :type params: :class:`numpy.ndarray`
+    :param kind: One of :code:`sequential`, :code:`diverging`, or :code:`cyclic`
+    :type kind: str
+    :param lightness_base: Additive boost for the lightness parameter
+    :type lightness_base: float
+    :param saturation_base: Additive boost for the saturation parameter
+    :type saturation_base: float
+    :return: The final colormap
+    :rtype: :class:`matplotlib.colors.LinearSegmentedColormap`
+    '''
     if kind == 'sequential':
-        cam = interpolate_sequential(hxs, params)
+        cam = interpolate_sequential(hxs, params, lightness_base, saturation_base)
     elif kind in ['diverging', 'cyclic']:
-        cam = interpolate_diverging(hxs, params)
+        cam = interpolate_diverging(hxs, params, lightness_base, saturation_base)
     else:
         raise NotImplementedError
 
@@ -173,7 +269,19 @@ def cmap_from_params(name, hxs, params, kind):
     return colors.LinearSegmentedColormap.from_list(name, cs)
 
 def simulate_cvd(fig, kind, severity):
+    ''' Applies the given color vision deficiency to the given figure
+    and returns a modified image.
 
+    :param fig: Figure to modify
+    :type fig: :class:`matplotlib.figure`
+    :param kind: One of :code:`protanomaly`, :code:`deuteranomaly`,
+        or :code:`tritanomaly`
+    :type kind: str
+    :param severity: Severity of the CVD, in the range [0, 100]
+    :type severity: float
+    :return: An approximate image perceived with this CVD
+    :rtype: :class:`PIL.Image.Image`
+    '''
     from PIL import Image
 
     fig.canvas.draw()
@@ -188,7 +296,21 @@ def simulate_cvd(fig, kind, severity):
     return Image.frombuffer('RGB', (ncols, nrows), sim, 'raw', 'RGB', 0, 3)
 
 def simulate_grayscale(fig):
+    ''' Applies a grayscale intensity mapping to the given figure
+    and returns a modified image. This is intended to approximate the
+    appearance either in black-and-white print media or perceived with
+    no color vision whatsoever.
 
+    .. important::
+
+       The returned image has the perceived lightness assigned to the
+       red, green, and blue channels equally.
+
+    :param fig: Figure to modify
+    :type fig: :class:`matplotlib.figure`
+    :return: An approximate image with no color
+    :rtype: :class:`PIL.Image.Image`
+    '''
     from PIL import Image
 
     fig.canvas.draw()

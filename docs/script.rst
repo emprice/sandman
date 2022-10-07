@@ -1,5 +1,5 @@
-Python interface
-================
+Scripting interface
+===================
 
 .. automodule:: sandman.sandman
    :members:
