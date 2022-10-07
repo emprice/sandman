@@ -19,7 +19,7 @@ jobs:
 
       - name: Install documentation dependencies
         run: |
-          pip3 install -U sphinx pygments hoverxref cmasher matplotlib
+          pip3 install -U sphinx pygments sphinx-hoverxref cmasher matplotlib
           pip3 install -U git+https://github.com/emprice/furiosa.git
           pip3 install -U git+https://github.com/emprice/nordplotlib.git
           pip3 install --ignore-installed $GITHUB_WORKSPACE
