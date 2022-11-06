@@ -239,6 +239,31 @@ def interpolate_diverging(hxs, params, lightness_base, saturation_base):
 
     return np.concatenate((xx1, xx2[::-1]))
 
+def cmap_from_json(jsonfile, mapname):
+    ''' Generates a :mod:`matplotlib` colormap from the given JSON file.
+
+    :param jsonfile: Name of the JSON file defining colormaps
+    :type jsonfile: str
+    :param mapname: Name of the colormap
+    :type mapname: str
+    :return: The final colormap
+    :rtype: :class:`matplotlib.colors.LinearSegmentedColormap`
+    '''
+    import json
+
+    with open(jsonfile, 'r') as f:
+        data = json.loads(f.read())
+
+    for opt_data in sorted(data['optimized'], key=lambda p: p['score']):
+        if opt_data['name'] == mapname: break
+
+    kw = data['options']
+    kw = { k : kw[k] for k in ['lightness_base', 'saturation_base'] }
+
+    return cmap_from_params(opt_data['name'],
+        list(map(lambda s: '#' + s, opt_data['colors'])),
+        opt_data['params'], kind=data['kind'], **kw)
+
 def cmap_from_params(name, hxs, params, kind, lightness_base, saturation_base):
     ''' Generates a :mod:`matplotlib` colormap from the given parameters.
 
